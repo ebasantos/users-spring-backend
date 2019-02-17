@@ -1,7 +1,5 @@
 package br.com.users.us.controller;
 
-
-
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,49 +12,44 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.users.us.entity.Profile;
-import br.com.users.us.repository.ProfileRepository;
+import br.com.users.us.entity.UserMachine;
+import br.com.users.us.repository.UserMachineRepository;
 
 @RestController
-@RequestMapping("/api/profile")
-public class ProfileController {
+@RequestMapping(path="/usersmachines")
+public class UserMachineController {
 	
 	@Autowired
-	private ProfileRepository _db;
+	private UserMachineRepository _db;
 
-    @GetMapping
+	@GetMapping
 	@ResponseBody
-	public Iterable<Profile> findAll() {
+	public Iterable<UserMachine> findAll() {
 		return _db.findAll();
 	}
-
+	
 	@GetMapping("/{id}")
 	@ResponseBody
-	public Profile findById(@PathVariable(value = "id") Long id) {
-        return _db.getOne(id);
+	public Optional<UserMachine> findById(@PathVariable(value = "id") Long id ) {
+		return _db.findById(id);
 	}
 	
 	@PostMapping("/new")
-	public Profile create(@RequestParam String nome) {
-		Profile profile = new Profile(nome);
-		_db.save(profile);
-		return profile;
-	}
-
-	@DeleteMapping(path = "/delete/{id}")
 	@ResponseBody
-	public void deleteById(@PathVariable(value = "id") Long id) {
-		Optional<Profile> prof = _db.findById(id);
-		if ( prof != null ) {
-			_db.deleteById(id);
-			
-		}
+	public UserMachine create(@RequestParam Long idU ,@RequestParam Long idM) {	
+		UserMachine machineuse = new UserMachine(idU, idM);
+		return machineuse;
 	}
 	
-	@DeleteMapping(path = "/deleteAll")
+	@DeleteMapping(path = "/delete/{id}")
 	@ResponseBody
-	public void delete() {
-		_db.deleteAll();
+	public void delete(@PathVariable(value = "id") Long id){
+		Optional<UserMachine> machineuse = _db.findById(id);
+		
+		if (machineuse != null) {
+			_db.deleteById(id);			
+		}
 	}
+
 
 }

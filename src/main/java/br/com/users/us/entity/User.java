@@ -32,7 +32,9 @@ public class User {
 	public Date dataCriacao;
 
 	@OneToOne
-	private Profile Profile;
+	public Profile Profile;
+	
+	
 
 	public User() {
 

@@ -1,7 +1,5 @@
 package br.com.users.us.controller;
 
-
-
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,49 +12,43 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.users.us.entity.Profile;
-import br.com.users.us.repository.ProfileRepository;
+import br.com.users.us.entity.Machine;
+import br.com.users.us.repository.MachineRepository;
 
 @RestController
-@RequestMapping("/api/profile")
-public class ProfileController {
+@RequestMapping(path="/machine")
+public class MachineController {
 	
 	@Autowired
-	private ProfileRepository _db;
+	private MachineRepository _db;
 
-    @GetMapping
+	@GetMapping
 	@ResponseBody
-	public Iterable<Profile> findAll() {
+	public Iterable<Machine> findAll() {
 		return _db.findAll();
 	}
-
+	
 	@GetMapping("/{id}")
 	@ResponseBody
-	public Profile findById(@PathVariable(value = "id") Long id) {
-        return _db.getOne(id);
+	public Machine findById(@PathVariable(value = "id") Long id) {
+		return _db.getOne(id);
 	}
 	
 	@PostMapping("/new")
-	public Profile create(@RequestParam String nome) {
-		Profile profile = new Profile(nome);
-		_db.save(profile);
-		return profile;
-	}
-
-	@DeleteMapping(path = "/delete/{id}")
 	@ResponseBody
-	public void deleteById(@PathVariable(value = "id") Long id) {
-		Optional<Profile> prof = _db.findById(id);
-		if ( prof != null ) {
-			_db.deleteById(id);
-			
-		}
+	public Machine create(@RequestParam String descricao ,@RequestParam String cod) {	
+		Machine machine = new Machine(descricao, cod);
+		_db.save(machine);
+		return machine;
 	}
 	
-	@DeleteMapping(path = "/deleteAll")
+	@DeleteMapping(path = "/delete/{id}")
 	@ResponseBody
-	public void delete() {
-		_db.deleteAll();
+	public void delete(@PathVariable(value = "id") Long id){
+		Optional<Machine> machine = _db.findById(id);
+		if (machine != null) {
+			_db.deleteById(id);			
+		}
 	}
 
 }
