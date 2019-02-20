@@ -1,54 +1,56 @@
-- o projeto esta feito em cima das dependencias do Maven, logo, pode ser necessaria a intalaÁ„o do mesmo, disponivel em:
+--------------------- TECNOLOGIAS-------------------------------
+Esta aplica√ß√£o foi desenvolvida Spring Boot framwork, gerenciado
+ pelo Maven , combanco de dados Postgres e Angular 7.
+
+--------------------- CONFIGURA√á√ïES-------------------------------
+
+No datasource.url, deve se passado o servidor ao qual o postgres ira startar, que por padr√£o √© o 5432, ap√≥s a barra '/' ,
+encontra-se o nome do banco de dados, para criar o bando deve-se abrir o gerenciador do postgres (por padr√£o ser√° o pgadmin),
+dentro do gerenciador, deve-se criar o banco de dados com o seguinte comando:  CREATE DATABASE users_db,
+n√£o ser√° necessario comandos para criar as tabela, pois a aplica√ß√£o esta vinculada ao Hibernete, que ja cuida deste quesito.
+
+2¬∞ deve ser passado o user do postgres ao qual a aplica√ß√£o se conectar√°.
+
+3¬∞ deve ser passada a senha do user referido anteriormente.
+
+- o projeto esta feito em cima das dependencias do Maven, logo, pode ser necessaria a intala√ß√£o do mesmo, disponivel em:
 https://maven.apache.org/
 	
-- ser· necessaria a configuraÁ„o do arquivo application.propierties
+- ser√° necessaria a configura√ß√£o do arquivo application.propierties
 nas seguintes linhas a baixo:
 
 
- 1∞ spring.datasource.url=jdbc:postgresql://localhost:5432/users_db
- 2∞ spring.datasource.username=postgres
- 3∞ spring.datasource.password=admin
+ 1¬∞ spring.datasource.url=jdbc:postgresql://localhost:5432/users_db
+ 2¬∞ spring.datasource.username=postgres
+ 3¬∞ spring.datasource.password=admin
 
---------------------- TECNOLOGIAS-------------------------------
-Esta aplicaÁ„o foi desenvolvida Spring Boot framwork, banco de 
-dados Postgres e Angular 7.
-
---------------------- CONFIGURA«’ES-------------------------------
-
-No datasource.url, deve se passado o servidor ao qual o postgres ira startar, que por padr„o È o 5432, apÛs a barra '/' ,
-encontra-se o nome do banco de dados, para criar o bando deve-se abrir o gerenciador do postgres (por padr„o ser· o pgadmin),
-dentro do gerenciador, deve-se criar o banco de dados com o seguinte comando:  CREATE DATABASE users_db,
-n„o ser· necessario comandos para criar as tabela, pois a aplicaÁ„o esta vinculada ao Hibernete, que ja cuida deste quesito.
-
-2∞ deve ser passado o user do postgres ao qual a aplicaÁ„o se conectar·.
-
-3∞ deve ser passada a senha do user referido anteriormente 
 
 
 --------------------- END-POINTS-------------------------------
 
- a aplicaÁ„o contÈm os seguintes end-points.
+ a aplica√ß√£o cont√©m os seguintes end-points.
 
 //localhost:8080/api/users
 
- - este end-point contÈm todos os metodos rest para a criaÁ„o do usuario,
-   para vincular perfil com usu·rio, basta passar o id do perfil no metodo POST,
-   este id est· dentro do metodo 'Create', nomeado como 'IdProf'.
+ - este end-point cont√©m todos os metodos rest para a cria√ß√£o do usuario,
+   para vincular perfil com usu√°rio, basta passar o id do perfil no metodo POST,
+   este id est√° dentro do metodo 'Create', nomeado como 'IdProf'.
 
 //localhost:8080/api/profile
 
- - este end-point contÈm todos os metodos rest para a criaÁ„o do prefil de usu·rio,
-   lembrando que para o cadastro de usu·rio, deve-se cadastrar antes o perfil.
+ - este end-point cont√©m todos os metodos rest para a cria√ß√£o do prefil de usu√°rio,
+   lembrando que para o cadastro de usu√°rio, deve-se cadastrar antes o perfil.
 
 //localhost:8080/api/machine
 
- - este end-point contÈm todos os metodos rest para a criaÁ„o do dos equipamentos do usu·rio.
+ - este end-point cont√©m todos os metodos rest para a cria√ß√£o do dos equipamentos do usu√°rio.
 
 //localhost:8080/api/usersmachines
 
- - este end-point contÈm todos os metodos rest para a criaÁ„o da tabela que vincula equipamentos
-   e usu·rio, ser· necess·rio somente passar os campos 'idU', sendo o Id do usu·rio e 'udM',
-   sendo o id do equipamento, este mÈtodo foi baseado no diagrama proposto.
+ - este end-point cont√©m todos os metodos rest para a cria√ß√£o da tabela que vincula equipamentos
+   e usu√°rio, ser√° necess√°rio somente passar os campos 'idU', sendo o Id do usu√°rio e 'udM',
+   sendo o id do equipamento, este m√©todo foi baseado no diagrama proposto.
 
 
+------------ Erik Santos-------------------------------------------
 
