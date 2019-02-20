@@ -50,7 +50,9 @@ nas seguintes linhas a baixo:
  - este end-point contém todos os metodos rest para a criação da tabela que vincula equipamentos
    e usuário, será necessário somente passar os campos 'idU', sendo o Id do usuário e 'udM',
    sendo o id do equipamento, este método foi baseado no diagrama proposto.
-
-
+------------ POSTMAN-------------------------------------------
+ Para efetuar ps methodos rests, foi criada uma classe nomeada como 'AllowCors', afins de liberação
+ desta funcionalidade.
+ Os methodos posts enviados, devem ser enviados somente o Body, e não o header.
 ------------ Erik Santos-------------------------------------------
 
