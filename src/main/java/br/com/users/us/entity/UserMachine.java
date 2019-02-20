@@ -5,12 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "users_machines")
 public class UserMachine {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column
 	private Long idUserMac;
 	@Column
 	public Long idMachine;
@@ -22,6 +25,9 @@ public class UserMachine {
 		this.idUser = id_User;
 	}
 	
+	public UserMachine() {
+	}
+	
 	public Long getIdUserMac() {
 		return idUserMac;
 	}
@@ -31,11 +37,6 @@ public class UserMachine {
 		this.idUserMac = idUserMac;
 	}
 
-	
-	
-	
-	
-	
 	public Long getIdUser() {
 		return idUser;
 	}

@@ -16,7 +16,7 @@ import br.com.users.us.entity.UserMachine;
 import br.com.users.us.repository.UserMachineRepository;
 
 @RestController
-@RequestMapping(path="/usersmachines")
+@RequestMapping("/api/usersmachines")
 public class UserMachineController {
 	
 	@Autowired
@@ -34,14 +34,14 @@ public class UserMachineController {
 		return _db.findById(id);
 	}
 	
-	@PostMapping("/new")
+	@PostMapping
 	@ResponseBody
 	public UserMachine create(@RequestParam Long idU ,@RequestParam Long idM) {	
 		UserMachine machineuse = new UserMachine(idU, idM);
-		return machineuse;
+		return _db.save(machineuse);
 	}
 	
-	@DeleteMapping(path = "/delete/{id}")
+	@DeleteMapping(path = "/{id}")
 	@ResponseBody
 	public void delete(@PathVariable(value = "id") Long id){
 		Optional<UserMachine> machineuse = _db.findById(id);

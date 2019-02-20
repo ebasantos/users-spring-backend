@@ -1,4 +1,4 @@
-package br.com.users.us.entity;
+	package br.com.users.us.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +14,7 @@ public class Profile {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column
-	private Long idProfile;
+	public Long idProfile;
 
 	@Column
 	public String nome;

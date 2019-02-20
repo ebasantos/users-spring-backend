@@ -5,22 +5,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name= "machines")
 public class Machine {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column
 	private Long idMachine;
 	@Column
 	public String descricao;
 	@Column
 	public String cod_Machine;
 	
-	
 	public Machine(String descricao, String cod_Machine) {
 		this.descricao = descricao;
 		this.cod_Machine = cod_Machine;
+	}
+	
+	public Machine() {
 	}
 	
 	public Long getId_Machine() {

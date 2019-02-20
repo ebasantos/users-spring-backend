@@ -36,14 +36,14 @@ public class ProfileController {
         return _db.getOne(id);
 	}
 	
-	@PostMapping("/new")
+	@PostMapping
 	public Profile create(@RequestParam String nome) {
 		Profile profile = new Profile(nome);
-		_db.save(profile);
-		return profile;
+		return _db.save(profile);
+		 
 	}
 
-	@DeleteMapping(path = "/delete/{id}")
+	@DeleteMapping(path = "/{id}")
 	@ResponseBody
 	public void deleteById(@PathVariable(value = "id") Long id) {
 		Optional<Profile> prof = _db.findById(id);
